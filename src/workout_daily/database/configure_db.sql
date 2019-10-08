@@ -31,3 +31,23 @@ INSERT INTO ATHLETE(name, age, height, weight) VALUES('Thaynan Andrey Rocha Nune
 
 -- Verifying if the new value was inserted.
 SELECT * FROM ATHLETE;
+
+-------------------------- CREATING WORKOUT TABLE FOR DATABASE --------------------------
+
+-- Create WORKOUT's Tables
+CREATE TABLE WORKOUT(
+    id serial PRIMARY KEY,
+    name varchar(255),
+    creation_date date DEFAULT CURRENT_DATE,
+    id_athlete int NOT NULL,
+    FOREIGN KEY (id_athlete) REFERENCES ATHLETE (id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- Granting user 'app_workout_daily' access to the WORKOUT table.
+GRANT ALL PRIVILEGES ON TABLE WORKOUT TO app_workout_daily;
+
+-- Grants permission to 'app_workout_daily' to create sequences in WORKOUT table.
+GRANT USAGE, SELECT ON SEQUENCE WORKOUT_ID_SEQ TO app_workout_daily;
+
+-- Inserts a new entity on table WORKOUT which references itself to ATHLETE with id 1.
+INSERT INTO WORKOUT(name, id_athlete) VALUES('A', 1);
