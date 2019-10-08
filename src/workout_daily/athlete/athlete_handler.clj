@@ -21,14 +21,7 @@
        (response (update-athlete (Integer/parseInt id) name)))
 
   (DELETE "/api/athletes/:id" [id]
-        (response (delete-athlete (Integer/parseInt id))))
+        (response (delete-athlete (Integer/parseInt id)))))
 
-  (route/resources "/")
-
-  (route/not-found "Not Found"))
-
-
-(def athlete-handler
-    (-> (handler/api athlete-routes)
-        (json/wrap-json-params)
-        (json/wrap-json-response)))
+(def athlete-handler 
+     (handler/api athlete-routes))

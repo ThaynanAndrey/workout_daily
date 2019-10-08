@@ -1,6 +1,11 @@
 (ns workout-daily.core
   (:require [compojure.core :refer :all]
-     [workout-daily.athlete.athlete-handler :refer [athlete-handler]]))
+            [ring.middleware.json :as json]
+            [workout-daily.athlete.athlete-handler :refer [athlete-handler]]
+            [workout-daily.workout.workout-handler :refer [workout-handler]]))
 
 (def app
-     (routes athlete-handler))
+     (-> (routes athlete-handler
+             workout-handler)
+          (json/wrap-json-params)
+          (json/wrap-json-response)))
