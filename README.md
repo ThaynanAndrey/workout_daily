@@ -6,12 +6,12 @@ Backend designed to provide the creation and monitoring of a user's workouts. Th
 
 ### Database Configuration
 
-Before you can start using it, you must configure the PostgreSQL database on the machine, so you can follow the sequence of steps described in the sql file: [configure_db](http://www.github.com/ThaynanAndrey/workout_daily/tree/master/src/workout_daily/config/database/configure_db.sql).
+Before you can start using it, you must configure the PostgreSQL database on the machine, so you can follow the sequence of steps described in the sql file: [configure_db](https://github.com/ThaynanAndrey/workout_daily/blob/refactoring-code/src/workout_daily/config/database/configure_db.sql).
 
 ### Execution
 
 To run the system, just run:   
-    ```bash
+    ```
         lein ring server
     ```
 
