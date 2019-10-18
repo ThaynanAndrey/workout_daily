@@ -1,7 +1,19 @@
 # Workout Daily
 
-Backend to create and management workouts for users.
+Backend designed to provide the creation and monitoring of a user's workouts. This service was developed in **Clojure**, using the **Ring** and **Compojure** libraries. In addition, data is stored and accessed in a PostgreSQL database using the Korma library.
 
+## Usage
+
+### Database Configuration
+
+Before you can start using it, you must configure the PostgreSQL database on the machine, so you can follow the sequence of steps described in the sql file: [configure_db](http://www.github.com/ThaynanAndrey/workout_daily/tree/master/src/workout_daily/config/database/configure_db.sql).
+
+### Execution
+
+To run the system, just run:   
+    ```bash
+        lein ring server
+    ```
 
 ## License
 

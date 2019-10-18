@@ -1,8 +1,6 @@
-(ns workout-daily.exercise.exercise-dao
-    (:require [workout-daily.database.database]
-            [korma.core :refer :all])
-    (:import java.text.SimpleDateFormat)
-    (:import java.sql.Timestamp))
+(ns workout-daily.dao.exercise.exercise-dao
+    (:require [workout-daily.config.database.database]
+            [korma.core :refer :all]))
 
 (defentity exercise)
 (defentity workout)
@@ -23,18 +21,12 @@
         (where (and (= :athlete.id id-athlete)
             (= :exercise.id_workout id-workout) (= :exercise.id id-exercise)))))
 
-(defn convert-string-to-timestamp [str_date]
-    "Convert string in format yyyy-mm-dd to Java timestamp"
-    (let [simple-date-format (SimpleDateFormat. "yyyy-MM-dd")]
-        (Timestamp. (.getTime (.parse simple-date-format str_date)))))
-
 (defn add-exercise-to-workout [name creation_date set repetitions weight note id_workout]
     "Adds new workout to exercise with values: name, creation_date, set, repetitions, weight, note, id_workout"
     (let [value-default {:name name :set set :repetitions repetitions
                          :weight weight :note note :id_workout id_workout}
           value-to-insert (if (nil? creation_date) value-default
-                            (conj value-default 
-                                {:creation_date (convert-string-to-timestamp creation_date)}))]
+                            (conj value-default {:creation_date creation_date}))]
         (insert exercise
             (values value-to-insert))))
 
