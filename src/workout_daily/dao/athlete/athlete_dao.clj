@@ -1,5 +1,5 @@
-(ns workout-daily.athlete.athlete-dao
-  (:require [workout-daily.database.database]
+(ns workout-daily.dao.athlete.athlete-dao
+  (:require [workout-daily.config.database.database]
             [korma.core :refer :all]))
 
 (defentity athlete)

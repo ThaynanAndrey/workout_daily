@@ -1,4 +1,4 @@
-(ns workout-daily.database
+(ns workout-daily.config.database.database
   (:require [korma.db :as korma]))
 
 (def db-connection-info 
